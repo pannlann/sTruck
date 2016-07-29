@@ -1,0 +1,153 @@
+/* App loading indicator */
+/**
+			 * Example of an initial loading indicator.
+			 * It is recommended to keep this as minimal as possible to provide instant feedback
+			 * while other resources are still being loaded for the first time
+			 */
+html, body {
+	height: 100%;
+	background-color: #FFFFFF;
+}
+
+tr:nth-child(even) {
+	background: #D8E4EA !important;
+}
+
+tr:nth-child(odd) {
+	/* 	background: #FFF !important;
+ */
+	
+}
+
+#appLoadingIndicator {
+	position: absolute;
+	top: 50%;
+	margin-top: -15px;
+	text-align: center;
+	width: 100%;
+	height: 30px;
+	-webkit-animation-name: appLoadingIndicator;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-direction: linear;
+}
+
+#appLoadingIndicator>* {
+	background-color: #1985D0;
+	display: inline-block;
+	height: 30px;
+	-webkit-border-radius: 15px;
+	margin: 0 5px;
+	width: 30px;
+	opacity: 0.8;
+}
+
+.sapMOHRBgTransparent {
+	padding-bottom: 0px !important;
+}
+
+.sap-phone .sapMITBHead {
+	margin-top: 0px !important;
+}
+
+.sapMToggleBtnPressed, .sapMIBar-CTX .sapMToggleBtnPressed,
+	.sapMTB-Transparent-CTX .sapMBtnInner.sapMToggleBtnPressed {
+	background-color: #e52929 !important;
+}
+
+.sapMLIBContent {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.sapMInputVH {
+	margin-bottom: 3rem;
+}
+
+.sapMInputBaseInner[placeholder] {
+	font-size: 3.5rem;
+}
+
+.biggerLabel {
+	font-size: 2rem !important;
+}
+
+.normalLabel {
+	white-space: inherit;
+	font-size: 1.5rem !important;
+	padding-bottom: 1px;
+	padding-top: 1px;
+}
+
+.biggerButton {
+	white-space: inherit;
+	height: 100%;
+}
+
+.sapMBtnInner {
+	font-size: 2.3rem;
+}
+
+.sapMInputBaseInner {
+	height: 5rem;
+	font-size: 3.5rem;
+}
+
+.sapMTitleStyleAuto {
+	font-size: 2.2rem;
+}
+
+.sapMIBar-CTX.sapMFooter-CTX .sapMLabel {
+	font-size: 1.5rem;
+}
+
+.sapMTextAreaInner {
+	font-size: 1.5rem;
+}
+
+.sapMBtnIcon{
+	font-size: 2rem;
+}
+.sapMLIB {
+	border-bottom: 5px solid #e5e5e5;
+}
+.sapMBar {
+    height: 4rem;
+    line-height: 3.5rem;
+}
+.sapMPage>.sapMPageHeader + section, .sapMPage>.sapMPageSubHeader + section, .sapMPage>.sapMPageHeader + .sapUiHiddenPlaceholder + section {
+    top: 4rem;
+}
+
+.sapMOHRTitleTextWrappable{
+	font-size: 2rem;
+}
+
+.sapMObjectNumberText{
+	font-size: 2rem !important;
+}
+
+.sapMObjectNumberUnit {
+	font-size: 1rem;
+}
+
+.sapMITBTextOnly .sapMITBText{
+    font-size: 1.5rem !important;
+    line-height: 1.5rem !important;	
+}
+
+.sapMListTbl .sapMObjectIdentifierTitle .sapMText {
+    font-size: 1.25rem;
+}
+
+.sapMListTbl .sapMObjectIdentifierText .sapMText{
+    font-size: 1.25rem;
+}
+
+.sapMBtn {
+	height:100% !important;
+}
+
+.sapMBtnInner {
+	height:100% !important;
+}

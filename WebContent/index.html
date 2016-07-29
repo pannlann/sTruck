@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="UTF-8">
+ 		<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+		<meta name="HandheldFriendly" content="True" />
+    <meta http-equiv="PRAGMA" content="NO-CACHE" />	
+    <meta name="viewport" content="minimum-scale=.25, initial-scale=1" />
+    
+    <title>Spicers Truck Driver Apps</title>
+    <script src="ext/winstore-jscompat.js"></script>
+
+    <script id="sap-ui-bootstrap" src="resources/sap-ui-core.js"
+            data-sap-ui-libs="sap.m, sap.ui.layout, sap.ui.commons" data-sap-ui-language="en"
+            data-sap-ui-xx-bindingSyntax="complex"
+            data-sap-ui-resourceroots='{"SpicersTruck": "./"}'
+            data-sap-ui-theme="sap_bluecrystal"></script>
+		
+		<script>
+				sap.ui.localResources("util");
+
+		    //declare constant and global variable
+				jQuery.sap.require("SpicersTruck.util.Constant");
+ 				jQuery.sap.require("SpicersTruck.util.RoutingLogic");
+				jQuery.sap.require("SpicersTruck.util.Global");
+				jQuery.sap.require("SpicersTruck.util.InputWithClear");
+				jQuery.sap.require("SpicersTruck.util.SignaturePad");
+
+				//declare routing library
+				jQuery.sap.require("sap.ui.core.routing.Router");
+				jQuery.sap.require("sap.ui.core.routing.HashChanger");
+			  jQuery.sap.require("sap.m.routing.RouteMatchedHandler");  				
+				
+      	new sap.ui.core.ComponentContainer("myComp", { name: "SpicersTruck" }).placeAt("content");
+
+    </script>
+    <script src="ext/date.js"></script>
+    <script src="ext/sugar.js"></script>
+    <link rel="stylesheet" href="css/custom.css" type="text/css" />
+
+	</head>
+	<body class="sapUiBody" role="application" >
+		<div id="content"></div>
+		<div id="appLoadingIndicator">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div> 		
+ </body>
+</html>

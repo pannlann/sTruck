@@ -1,0 +1,23 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:suite="sap.suite.ui.commons" xmlns="sap.m" xmlns:layout="sap.ui.layout"
+	xmlns:util="SpicersTruck.util" controllerName="SpicersTruck.view.Main" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Spicers Truck" enableScrolling="false">
+		<layout:VerticalLayout class="sapUiContentPadding" width="100%">
+			<layout:content>
+				<Label class="biggerLabel" text="Please Enter Your Truck ID"/>
+				<util:InputWithClear id="truckIdInput" change="truckIdChange" type="Text" width="100%"/>
+				<Label class="biggerLabel" text="Or Enter Carrier ID Here"/>
+				<util:InputWithClear id="carrierIdInput" change="carrierIdChange" type="Text" width="100%"/>
+				<Label class="biggerLabel" text="Or Enter Shipment No Here"/>
+				<util:InputWithClear id="shipmentIdInput" change="shipmentIdChange" type="Text" width="100%"/>
+				<Button class="biggerButton" text="Login" press="pressedLogin" type="Emphasized" icon="sap-icon://role" />
+			</layout:content>
+		</layout:VerticalLayout>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Label class="appVersion" text="{app>/version}" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

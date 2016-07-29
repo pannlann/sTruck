@@ -1,0 +1,34 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:suite="sap.suite.ui.commons" xmlns:form="sap.ui.layout.form" xmlns="sap.m"
+	xmlns:layout="sap.ui.layout" controllerName="SpicersTruck.view.ShipmentList" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="shipmentListPage" title="Shipment List" showNavButton="true" navButtonPress="pressShipmentListBack">
+		<content>
+
+			<List id="shipmentList" mode="SingleSelectMaster" select="shipmentListPressed" items="{path: 'Shipment>/results'}">
+				<CustomListItem>
+					<HBox>
+						<Text width="5px" />
+						<VBox width="95%">
+							<Label class="normalLabel" design="Bold"
+								text="{ 
+							parts: ['Shipment>Shipment', 'Shipment>TotalUnit'], 
+							formatter: 'SpicersTruck.util.Formatter.shipment'
+							}" />
+							<Label class="normalLabel"
+								text="{ 
+							parts: ['Shipment>CarrierText', 'Shipment>Vehicle'], 
+							formatter: 'SpicersTruck.util.Formatter.carrier'
+							}" />
+							<Label class="normalLabel"
+								text="{ 
+							parts: ['Shipment>DespatchDate', 'Shipment>DespatchTime'], 
+							formatter: 'SpicersTruck.util.Formatter.despatchDateTime'
+							}" />
+							<Text class="normalLabel" text="{parts: ['Shipment>GrossWeight','Shipment>WeightUomText'], formatter: 'SpicersTruck.util.Formatter.grossWeight'}" />
+						</VBox>
+					</HBox>
+				</CustomListItem>
+			</List>
+
+		</content>
+	</Page>
+</core:View>

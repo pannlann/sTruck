@@ -1,0 +1,63 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:suite="sap.suite.ui.commons" xmlns:form="sap.ui.layout.form" xmlns="sap.m"
+	xmlns:util="SpicersTruck.util" xmlns:layout="sap.ui.layout" controllerName="SpicersTruck.view.ConfirmDelivery" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{ path: 'Delivery>/Delivery', formatter: 'SpicersTruck.util.Formatter.confDeliveryHeading'}"
+		showNavButton="true" navButtonPress="confirmDeliveryBackPressed">
+<!-- 		<Table id="returnTable" inset="false" noDataText="No returns." items="{path: 'ReturnDel>/ReturnDelItemCollection'}">
+			<headerToolbar>
+				<Toolbar>
+					<Title text="Return Material" level="H2" />
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column hAlign="Left" width="60%">
+					<Text textAlign="Center" text="Material" />
+				</Column>
+				<Column hAlign="Center" width="40%">
+					<Text text="Qty" />
+				</Column>
+			</columns>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier title="{ReturnDel>MaterialDesc}" text="{ReturnDel>Material}" />
+					<ObjectNumber	number="{ReturnDel>Qty}"	unit="{ReturnDel>QtyUom}" />
+				</cells>
+			</ColumnListItem>
+		</Table>
+ -->
+ 		<Table id="customerDNTable" inset="false" mode="MultiSelect" selectAll="true" items="{path: 'customerDN>/'}">
+			<columns>
+					<Column hAlign="Left" width="60%">
+						<Text textAlign="Center" class="normalLabel" text="Delivery" />
+					</Column>
+					<Column hAlign="Center" width="40%">
+						<Text  class="normalLabel" text="Packages" />
+					</Column>
+			</columns>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier title="{customerDN>Delivery}"/>
+					<ObjectNumber	number="{customerDN>TotalUnit}"/>
+				</cells>
+			</ColumnListItem>
+		</Table>
+ 		<layout:VerticalLayout class="sapUiContentPadding" width="100%">
+			<layout:content>
+				<Label class="biggerLabel" text="Recipient's name" required="true"/>
+				<util:InputWithClear type="Text" id="recipientInput" width="100%" />
+				<Label class="biggerLabel" text="Comment"/>
+				<TextArea width="100%" id="commentInput" rows="3"/>
+				<Label class="biggerLabel" text="Recipient's signature" required="true"/>
+				<util:SignaturePad id="signatureInput" />
+				<Button text="Clear Signature" type="Reject" press="clearSignaturePressed" width="300px"/>
+				<Label id="geolocationInput" visible="false" />
+			</layout:content>
+		</layout:VerticalLayout>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button text="Confirm" type="Accept" press="confirmReceivePressed" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

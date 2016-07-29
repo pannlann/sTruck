@@ -1,0 +1,74 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:suite="sap.suite.ui.commons" xmlns:form="sap.ui.layout.form" xmlns="sap.m"
+	xmlns:layout="sap.ui.layout" controllerName="SpicersTruck.view.Delivery" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showNavButton="true" title="Delivery" navButtonPress="pressDeliveryBack">
+		<content>
+			<ObjectHeader
+				title="{ 
+							parts: ['Delivery>/Delivery', 'Delivery>/DeliveryName'], 
+							formatter: 'SpicersTruck.util.Formatter.deliveryHeading'
+							}"
+				responsive="true" number="{path: 'Delivery>/TotalUnit', formatter: 'SpicersTruck.util.Formatter.removeLeadZero'}" numberUnit="Package(s)">
+				<headerContainer>
+					<IconTabBar upperCase="true" visible="true" expanded="true">
+						<items>
+							<IconTabFilter text="Instruction" key="key2" visible="{path: 'Delivery>/Instruction', formatter: 'SpicersTruck.util.Formatter.showInstruction'}">
+								<content>
+									<form:SimpleForm>
+										<Text class="normalLabel" text="{Delivery>/Instruction}" />
+									</form:SimpleForm>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter text="Address" key="key1">
+								<content>
+									<Link  class="normalLabel" text="{Delivery>/DeliveryAddress}" href="{ 
+							path: 'Delivery>/DeliveryAddress', 
+							formatter: 'SpicersTruck.util.Formatter.addressLink'
+							}" />
+								</content>
+							</IconTabFilter>
+							<IconTabFilter text="Total Weight" key="key3">
+								<content>
+									<form:SimpleForm>
+										<Text  class="normalLabel"
+											text="{ 
+							parts: ['Delivery>/TotalWeight', 'Delivery>/WeightUom'], 
+							formatter: 'SpicersTruck.util.Formatter.deliveryWeight'
+							}" />
+									</form:SimpleForm>
+								</content>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</headerContainer>
+			</ObjectHeader>
+
+		</content>
+ 		<Table id="materialTable" inset="false" items="{path: 'Delivery>/DeliveryTruckItemCollection/results'}">
+			<columns>
+				<Column hAlign="Left" width="70%">
+					<Text textAlign="Center"  class="normalLabel" text="Material" />
+				</Column>
+				<Column hAlign="Center" width="30%">
+					<Text  class="normalLabel" text="Qty" />
+				</Column>
+<!-- 				<Column hAlign="Center" width="25%">
+					<Text text="Return Item" />
+				</Column>
+ -->			</columns>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+					<ObjectIdentifier title="{Delivery>MaterialDesc}" text="{Delivery>Material}" />
+					<ObjectNumber	number="{Delivery>Qty}"	unit="{Delivery>QtyUom}" />
+<!-- 					<ToggleButton width="100%" icon="sap-icon://undo" class="returnToggle" press="returnButtonPressed" pressed="Delivery>ReturnDel"/>
+ -->				</cells>
+			</ColumnListItem>
+		</Table>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button text="Confirm Delivery" type="Accept" press="confirmDeliveryPressed" />
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
+</core:View>

@@ -1,0 +1,96 @@
+<core:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:suite="sap.suite.ui.commons" xmlns:form="sap.ui.layout.form" xmlns="sap.m"
+	xmlns:l="sap.ui.layout" controllerName="SpicersTruck.view.Shipment" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="shipmentPage" title="Shipment" showNavButton="true" navButtonPress="shipmentBackPressed">
+		<content>
+			<ObjectHeader title="{ 
+							path: 'SelectedShipment>/Shipment', 
+							formatter: 'SpicersTruck.util.Formatter.shipmentTitle'
+							}"
+				responsive="true" number="{path: 'SelectedShipment>/TotalUnit', formatter: 'SpicersTruck.util.Formatter.removeLeadZero'}" numberUnit="Package(s)">
+				<headerContainer>
+					<IconTabBar upperCase="true" visible="true" expanded="false">
+						<items>
+							<IconTabFilter text="Info" key="key1">
+								<content>
+									<form:SimpleForm maxContainerCols="3">
+										<Label text="Shipment Type" class="normalLabel"/>
+										<Text text="{SelectedShipment>/TypeText}" class="normalLabel"/>
+										<Label text="Route" class="normalLabel"/>
+										<Text text="{SelectedShipment>/RouteText}" class="normalLabel"/>
+										<Label text="Carrier" class="normalLabel"/>
+										<Text text="{SelectedShipment>/CarrierText}" class="normalLabel"/>
+										<Label text="Container ID" class="normalLabel"/>
+										<Text text="{SelectedShipment>/ContainerID}" class="normalLabel"/>
+									</form:SimpleForm>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter text="Total Weight" key="key2">
+								<content>
+									<form:SimpleForm maxContainerCols="2">
+										<Label text="Product Weight" class="normalLabel"/>
+										<Text class="normalLabel" text="{parts: ['SelectedShipment>/ProductWeight','SelectedShipment>/WeightUomText'], formatter: 'SpicersTruck.util.Formatter.weightUom'}" />
+										<Label text="Container Weight" class="normalLabel"/>
+										<Text class="normalLabel" text="{parts: ['SelectedShipment>/ContainerWeight','SelectedShipment>/WeightUomText'], formatter: 'SpicersTruck.util.Formatter.weightUom'}" />
+										<Label text="Non-chargable Weight" class="normalLabel"/>
+										<Text class="normalLabel" text="{parts: ['SelectedShipment>/NonChargeWeight','SelectedShipment>/WeightUomText'], formatter: 'SpicersTruck.util.Formatter.weightUom'}" />
+										<Label text="Gross Weight" class="normalLabel"/>
+										<Text class="normalLabel" text="{parts: ['SelectedShipment>/GrossWeight','SelectedShipment>/WeightUomText'], formatter: 'SpicersTruck.util.Formatter.weightUom'}" />
+									</form:SimpleForm>
+								</content>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</headerContainer>
+			</ObjectHeader>
+			<List id="deliveryList" mode="SingleSelectMaster" select="deliveryItemPressed"
+				items="{path: 'SelectedShipment>/DeliveryHeaderCollection/results',
+										sorter: [{ path: 'SelectedShipment>RequiredDate', descending: false },
+										{ path: 'SelectedShipment>RequiredTime', descending: false }]}">
+				<CustomListItem>
+					<HBox>
+						<core:Icon src="sap-icon://accept" visible="{ path: 'SelectedShipment>DeliveredFlag', formatter: 'SpicersTruck.util.Formatter.flag'}" />
+						<Text width="5px" />
+						<VBox width="95%">
+							<Label design="Bold" class="normalLabel"
+								text="{ 
+							parts: ['SelectedShipment>Delivery', 'SelectedShipment>DeliveryName' ], 
+							formatter: 'SpicersTruck.util.Formatter.deliveryHeading'
+							}" />
+							<Label class="normalLabel"
+								text="{ 
+							parts: ['SelectedShipment>RequiredDate', 'SelectedShipment>RequiredTime'], 
+							formatter: 'SpicersTruck.util.Formatter.deliveryDateTime'
+							}" />
+							<HBox width="100%">
+								<Label class="normalLabel"
+									text="{ 
+							parts: ['SelectedShipment>TotalWeight', 'SelectedShipment>WeightUom'], 
+							formatter: 'SpicersTruck.util.Formatter.deliveryWeight'
+							}" />
+								<Text width="15px" />
+								<Label design="Bold" class="normalLabel"
+									text="{ 
+							path: 'SelectedShipment>TotalUnit', 
+							formatter: 'SpicersTruck.util.Formatter.deliveryPackages'
+							}" />
+								<Text width="15px" />
+								<core:Icon color="Red" class="normalLabel" src="sap-icon://expense-report"
+									visible="{ 
+							path: 'SelectedShipment>InvoiceWithGoods', 
+							formatter: 'SpicersTruck.util.Formatter.flag'
+							}" />
+							</HBox>
+							<Link text="{SelectedShipment>DeliveryAddress}" class="normalLabel" href="{ 
+							path: 'SelectedShipment>DeliveryAddress', 
+							formatter: 'SpicersTruck.util.Formatter.addressLink'
+							}" />
+							<TextArea width="100%" editable="false" value="{SelectedShipment>Instruction}" rows="3"
+								visible="{path: 'SelectedShipment>Instruction', formatter: 'SpicersTruck.util.Formatter.showInstruction'}" />
+						</VBox>
+					</HBox>
+					<Button text="Return DN" type="Reject" icon="sap-icon://undo" visible="{ path: 'SelectedShipment>ReturnDN', formatter: 'SpicersTruck.util.Formatter.flag'}" />
+				</CustomListItem>
+			</List>
+		</content>
+	</Page>
+</core:View>
